@@ -1,0 +1,50 @@
+# Theme for image-to-drawio builds (sizes in SOURCE-IMAGE px). Every color / font / size should come from here.
+# Build scripts refer to ROLES (e.g. fill="primary", size="heading", font="serif"), never raw values.
+colors:
+  primary: "#19355d"      # headers, key shapes, main arrows
+  secondary: "#4276b0"    # accents, highlights, secondary series
+  neutral: "#a4a4a4"      # borders, muted fills, de-emphasized marks
+  text: "#000000"         # body text, outlines, axes
+  background: "#ffffff"   # canvas and default fills
+  # Add figure-specific roles as needed (keep names semantic, not "green"):
+  # highlight: "#5b8c4a"
+  # cluster_d: "#c2a27a"
+
+fonts:
+  # family must be installed where the .drawio is viewed; web-safe families are safest.
+  # Set google: true to load a Google Font in draw.io (e.g. family: "Roboto").
+  sans:  { family: "Helvetica" }
+  serif: { family: "Times New Roman" }
+  mono:  { family: "Courier New" }
+default_font: sans
+
+sizes:            # font sizes in SOURCE-IMAGE pixels (scaled with the diagram)
+  title: 28
+  heading: 20
+  subheading: 16
+  body: 14
+  label: 12
+  small: 10
+  caption: 18
+
+line_height: 1.2
+
+strokes:          # stroke widths in px
+  hairline: 0.75
+  thin: 1
+  normal: 1.5
+  thick: 2.5
+  heavy: 4
+
+opacity:          # named opacities (percent) for tints / faded marks
+  tint: 25
+  soft: 45
+  faded: 35
+
+shape:
+  corner_radius: 8    # px, used when rounded=True
+  shadow: false
+
+spacing:
+  padding: 10         # inner padding for labeled boxes
+  gap: 12             # default gap for row()/grid() helpers

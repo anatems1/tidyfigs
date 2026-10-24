@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Build outputs
+dist/
+src/examples/out/
+src/examples/**/_work/
+src/examples/**/*.drawio
+src/examples/**/*.png
+
+# Toolkit work dirs created while using the skill inside this repo
+*_drawio_work/
+*_enhance_work/
+scratch/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

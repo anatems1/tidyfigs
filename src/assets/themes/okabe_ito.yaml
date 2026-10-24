@@ -1,0 +1,11 @@
+# Color-blind-safe roles from the Okabe-Ito palette (Okabe & Ito, 2008).
+colors: {primary: "#0072b2", secondary: "#e69f00", neutral: "#999999", text: "#000000", background: "#ffffff",
+         accent3: "#009e73", accent4: "#d55e00", accent5: "#cc79a7", accent6: "#56b4e9"}
+fonts: {sans: {family: "Helvetica"}, serif: {family: "Times New Roman"}}
+default_font: sans
+sizes: {title: 20, heading: 15, subheading: 13.5, body: 13, label: 11.5, small: 10.5, equation: 30, eq_term: 20, eq_small: 16}
+line_height: 1.2
+strokes: {hairline: 0.75, thin: 1, normal: 1.5, thick: 2, heavy: 3}
+opacity: {wash: 8, tint: 18, soft: 35, strong: 60}
+shape: {corner_radius: 8, shadow: false}
+spacing: {padding: 10, gap: 30}

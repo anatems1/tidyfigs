@@ -1,0 +1,138 @@
+# Interview bank for enhance-drawio. start_enhance.py filters it (skips what the context already
+# answers, adds origin-specific questions) and writes questions.md. Ask in rounds of <= 3-4
+# questions, offering the options as buttons when the client supports it; record answers in brief.yaml.
+# brief_key: where the answer goes in brief.yaml.  applies: always | image | text | math | photos | inferred
+rounds:
+  - name: Purpose and placement
+    questions:
+      - id: purpose
+        ask: What is this figure's job in the paper?
+        options: [Method / system overview, Conceptual framework, Comparison of approaches, Explaining an equation, Results / evidence, Graphical abstract]
+        brief_key: intent.purpose
+        applies: always
+      - id: domain
+        ask: What academic or scientific field is this figure for?
+        options: [Computer Science / AI / ML, Physics / Engineering, Biology / Medicine, Chemistry / Materials, Economics / Finance, Social Science / Causal Inference, Mathematics / Statistics, Other]
+        brief_key: intent.domain
+        applies: always
+      - id: venue
+        ask: Where will it be published?
+        options: [IEEE journal / conference, Elsevier journal, Springer (LNCS), Thesis / dissertation, Other (tell me)]
+        brief_key: target.venue
+        applies: always
+        note: sets width presets and minimum font size from assets/venues.yaml (confirm with author guidelines)
+      - id: width
+        ask: How wide will it be printed?
+        options: [Single column, 1.5 column, Full text width (double column), Custom width]
+        brief_key: target.column
+        applies: always
+      - id: takeaway
+        ask: In one sentence, what should a reader take away from this figure?
+        free_text: true
+        brief_key: intent.takeaway
+        applies: always
+
+  - name: Audience and content
+    questions:
+      - id: audience
+        ask: Who is the main audience?
+        options: [Specialists in this field, Broad engineering audience, Interdisciplinary / general readers]
+        brief_key: intent.audience
+        applies: always
+      - id: emphasis
+        ask: Which part should stand out most?
+        options_from: candidate_emphasis      # filled from the figure's labels
+        brief_key: intent.emphasis
+        applies: always
+      - id: density
+        ask: How much text should stay inside the figure?
+        options: [Keep current labels, Shorten labels and move explanations to the caption, Minimal labels (caption carries the detail)]
+        brief_key: content.text_density
+        applies: always
+      - id: terminology
+        ask: Any terms, abbreviations or symbols that must match the paper (or elements to remove/rename)?
+        free_text: true
+        brief_key: content.terminology
+        applies: always
+
+  - name: Visual style
+    questions:
+      - id: presentation_style
+        ask: How would you prefer to present the core concepts or equations?
+        options: [(Recommended) Active graphical demonstration (populated matrix computation, 2D continuous coordinate spaces, Bayesian plate diagrams, causal DAGs), High-level structural overview (swimlane workflow, summary cards, pipeline architecture)]
+        brief_key: style.presentation_style
+        applies: always
+      - id: print_mode
+        ask: How will it be printed or viewed?
+        options: [Color only (online), Must also work in grayscale, Grayscale only]
+        brief_key: target.print_mode
+        applies: always
+      - id: colorblind
+        ask: Should colors stay distinguishable for color-blind readers?
+        options: [Yes (recommended), Not needed]
+        brief_key: target.colorblind
+        applies: always
+      - id: font
+        ask: Which font should labels use to match the paper?
+        options: [Times New Roman (Times-based journals), Helvetica / Arial (sans), Latin Modern / Computer Modern (LaTeX look), Keep current]
+        brief_key: style.font
+        applies: always
+      - id: palette
+        ask: Which colors?
+        options: [Keep current theme, My palette (I'll give hex codes), Color-blind-safe preset (Okabe-Ito), Grayscale preset]
+        brief_key: style.palette
+        applies: always
+
+  - name: Math, labels and caption
+    questions:
+      - id: notation
+        ask: How should math be typeset? (e.g. bold vectors, upright operators, the paper's macros)
+        options: [Keep as is, Match my paper's notation (I'll describe it), Plain-text symbols only]
+        brief_key: math.notation
+        applies: math
+      - id: eq_numbers
+        ask: Should the figure reference equation numbers from the paper (e.g. "Eq. (3)")?
+        options: ["No", "Yes (give numbers)"]
+        brief_key: math.equation_refs
+        applies: math
+      - id: panels
+        ask: Panel labels?
+        options: [None, "(a), (b), ...", "a, b, ... (bold)"]
+        brief_key: style.panel_labels
+        applies: multi_panel
+      - id: caption
+        ask: Caption?
+        options: [Use the draft caption, I'll provide one, Write a new one from the paper text]
+        brief_key: content.caption_mode
+        applies: always
+
+  - name: Origin-specific
+    questions:
+      - id: fidelity
+        ask: How close should it stay to the original image?
+        options: [Keep the exact layout, Keep the structure but polish freely, Free redesign of the same content]
+        brief_key: content.fidelity
+        applies: image
+      - id: photos
+        ask: The figure embeds photos / raster crops. What should happen to them?
+        options: [Keep, Replace with higher-resolution versions I'll supply, Remove]
+        brief_key: content.photos
+        applies: photos
+      - id: inferred
+        ask: The prototype shows content the text does not state (listed below). Keep it?
+        options: [Keep all, Drop all, Decide item by item]
+        brief_key: content.inferred
+        applies: inferred
+      - id: merge
+        ask: Borrow anything from the other prototypes?
+        free_text: true
+        brief_key: content.merge_from_prototypes
+        applies: text
+
+  - name: Confirm
+    questions:
+      - id: plan_ok
+        ask: Here is the enhancement plan (summarized from your answers). Go ahead?
+        options: [Yes, Change something first]
+        brief_key: plan.approved
+        applies: always

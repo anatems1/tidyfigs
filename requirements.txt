@@ -1,0 +1,5 @@
+# Core — needed for every mode
+numpy
+pillow
+matplotlib
+pyyaml

@@ -1,0 +1,43 @@
+# Figure brief — filled by start_enhance.py from context, completed from the interview.
+figure:
+  name: ""                 # stem of the input .drawio
+  input: ""                # path of the .drawio being enhanced
+  origin: ""               # image-to-drawio | text-to-drawio | unknown
+  source_image: ""         # image-to-drawio: original raster
+  source_text: ""          # text-to-drawio: passage.md
+  build_script: ""         # original build.py if any (rebuild route)
+  output: ""               # <name>#ENHANCED.drawio
+intent:
+  purpose: ""
+  takeaway: ""
+  audience: ""
+  emphasis: []
+target:
+  venue: generic
+  column: double           # single | one_and_half | double | custom
+  width_in: 7.0
+  min_font_pt: 7
+  print_mode: color        # color | grayscale_safe | grayscale
+  grayscale: false
+  colorblind: true
+style:
+  theme: ""                # theme file used for the enhanced figure
+  font: keep
+  palette: keep
+  panel_labels: none
+content:
+  fidelity: polish         # exact | polish | redesign   (image origin)
+  text_density: keep
+  terminology: ""
+  inferred: keep           # keep | drop | itemized       (text origin)
+  photos: keep
+  caption_mode: draft
+  caption: ""
+  merge_from_prototypes: ""
+math:
+  notation: keep
+  equation_refs: ""
+plan:
+  route: ""                # rebuild | edit
+  steps: []
+  approved: false

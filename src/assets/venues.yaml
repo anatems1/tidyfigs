@@ -1,0 +1,28 @@
+# Typical figure sizes. ALWAYS confirm against the venue's current author guidelines; these are
+# starting points. width_in = printed figure width; min_font_pt = smallest lettering at print size.
+generic:
+  columns: {single: 3.5, one_and_half: 5.0, double: 7.0}
+  min_font_pt: 7
+  font: Helvetica
+ieee:
+  columns: {single: 3.5, double: 7.16}
+  min_font_pt: 8
+  font: Times New Roman
+  note: IEEE column 3.5 in, text width 7.16 in; check the IEEE graphics guidelines for current minimums
+elsevier:
+  columns: {single: 3.54, one_and_half: 5.51, double: 7.48}     # 90 / 140 / 190 mm
+  min_font_pt: 7
+  font: Helvetica
+  note: Elsevier artwork sizing 90 / 140 / 190 mm; check the journal's guide for authors
+springer_lncs:
+  columns: {single: 4.8, double: 4.8}                              # 122 mm text width
+  min_font_pt: 8
+  font: Times New Roman
+thesis:
+  columns: {single: 6.0, double: 6.5}
+  min_font_pt: 9
+  font: Times New Roman
+slides:
+  columns: {single: 10.0, double: 13.33}
+  min_font_pt: 18
+  font: Helvetica

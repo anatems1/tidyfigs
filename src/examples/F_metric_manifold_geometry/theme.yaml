@@ -1,0 +1,63 @@
+colors:
+  primary: "#1f497d"
+  secondary: "#2563eb"
+  neutral: "#64748b"
+  text: "#0f172a"
+  background: "#ffffff"
+  
+  # Panels
+  panel_bg: "#f8fafc"
+  panel_border: "#cbd5e1"
+  panel_header: "#1e293b"
+  
+  # Geometric Clusters
+  c1_color: "#1d4ed8"
+  c1_light: "#dbeafe"
+  c2_color: "#7c3aed"
+  c2_light: "#ede9fe"
+  c3_color: "#059669"
+  c3_light: "#d1fae5"
+  
+  # Metrics & Outliers
+  eigenvector: "#ea580c"
+  split_line: "#b91c1c"
+  noise_color: "#dc2626"
+  noise_light: "#fee2e2"
+  dist_line: "#475569"
+  unit_circle: "#94a3b8"
+
+fonts:
+  sans:  { family: "Helvetica" }
+  serif: { family: "Times New Roman" }
+  mono:  { family: "Courier New" }
+default_font: sans
+
+sizes:
+  title: 17
+  heading: 13
+  subheading: 11
+  body: 10
+  label: 9
+  small: 8
+  caption: 9.5
+  eq_large: 16
+  eq_term: 14
+  eq_small: 12
+
+line_height: 1.25
+
+strokes:
+  hairline: 0.75
+  thin: 1
+  normal: 1.5
+  thick: 2
+  heavy: 3
+
+opacity:
+  wash: 10
+  tint: 25
+  soft: 45
+  faded: 35
+
+shape:
+  corner_radius: 6

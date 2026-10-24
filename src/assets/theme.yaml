@@ -1,0 +1,31 @@
+# Default theme (text-to-drawio + enhance). Build scripts use ROLES (fill="primary", size="body"), never raw values.
+# YAML, TOML or JSON all work. Every prototype of every passage shares this file -> consistent figures.
+colors:
+  primary: "#19355d"      # key shapes, headers, main arrows, emphasis text
+  secondary: "#4276b0"    # second category, highlights, tints (with opacity roles)
+  neutral: "#a4a4a4"      # context, moderators, frames, muted annotations
+  text: "#000000"         # body text, outlines of neutral items
+  background: "#ffffff"   # canvas and box fills
+  # add semantic roles only when the text needs another category (e.g. highlight: "#5b8c4a")
+
+fonts:
+  sans:  { family: "Helvetica" }          # labels; set google: true for e.g. "Roboto" / "Inter"
+  serif: { family: "Times New Roman" }    # optional: captions in LaTeX-like papers
+default_font: sans
+
+sizes:                 # px at 100 % scale (a 1000-px-wide figure in a 6.5-in column => 1 px ~ 0.47 pt)
+  title: 20            # rarely used: academic figures carry their title in the caption
+  heading: 15          # card / panel headers
+  subheading: 13.5     # column pills, lane titles, layer tabs
+  body: 13             # box labels
+  label: 11.5          # secondary labels, callouts
+  small: 10.5          # annotations, legends, axis ticks (do not go smaller)
+  equation: 30         # main displayed equation
+  eq_term: 20          # equations inside diagrams
+  eq_small: 16         # equations in tables / strips
+
+line_height: 1.2
+strokes: { hairline: 0.75, thin: 1, normal: 1.5, thick: 2, heavy: 3 }
+opacity: { wash: 8, tint: 18, soft: 35, strong: 60 }
+shape:   { corner_radius: 8, shadow: false }
+spacing: { padding: 10, gap: 30 }

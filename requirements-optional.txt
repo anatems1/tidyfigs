@@ -1,0 +1,6 @@
+# Optional — each one unlocks a feature; everything degrades gracefully without them
+scipy                    # connected-component box detection, image diffs (image mode)
+opencv-python-headless   # alternative detector / line finding (image mode)
+pytesseract              # OCR of source images (also needs the tesseract binary)
+python-docx              # .docx passages (text mode)
+pypdf                    # .pdf passages (text mode)
