@@ -30,7 +30,7 @@ import subprocess
 import sys
 import tempfile
 
-VERSION = "0.0.1"
+VERSION = "2.0"
 FILES = {}
 
 # ================================================================================================
