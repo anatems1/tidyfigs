@@ -55,6 +55,40 @@ def build():
     return stub.replace(MARKER, "".join(parts) + "\n")
 
 
+def embedded(text):
+    """FILES dict of a bundle's source text (without running its dispatcher)."""
+    ns = {"__name__": "bundle_check"}
+    try:
+        exec(compile(text, "bundle", "exec"), ns)
+    except Exception as e:                      # noqa: BLE001
+        print(f"  (committed bundle does not load: {e})")
+        return {}
+    return ns.get("FILES", {})
+
+
+def explain(current):
+    """Say which embedded files differ, so a failing CI check is self-explanatory."""
+    old = embedded(current)
+    new = {}
+    for top in TOP_LEVEL:
+        for rel in walk(top):
+            with open(os.path.join(SRC, *rel.split("/")), encoding="utf-8") as f:
+                new[rel] = f.read()
+    for rel in sorted(set(old) - set(new)):
+        print(f"  in bundle but missing from src/ : {rel}   (not committed? check .gitignore / git ls-files)")
+    for rel in sorted(set(new) - set(old)):
+        print(f"  in src/ but not in bundle       : {rel}")
+    for rel in sorted(set(old) & set(new)):
+        if old[rel] != new[rel]:
+            a, b = old[rel], new[rel]
+            i = next((k for k in range(min(len(a), len(b))) if a[k] != b[k]), min(len(a), len(b)))
+            line = a[:i].count("\n") + 1
+            print(f"  content differs                 : {rel}  (first difference at line {line}; "
+                  f"bundle {len(a)} chars, src {len(b)} chars)")
+    if set(old) == set(new) and all(old[k] == new[k] for k in old):
+        print("  embedded files match — the difference is in tools/bundle_stub.py (header/footer)")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true", help="fail if the committed bundle differs from src/")
@@ -65,6 +99,7 @@ def main():
         current = open(a.out, encoding="utf-8").read() if os.path.exists(a.out) else ""
         if current != bundle:
             print(f"{os.path.relpath(a.out, ROOT)} is out of date — run: python tools/build_bundle.py")
+            explain(current)
             return 1
         print("bundle up to date")
         return 0
